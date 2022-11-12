@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\StmikController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StmikController;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,12 @@ Route::get('/edit/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit
 Route::post('/update/{id}', [PegawaiController::class, 'update'])->name('pegawai.update');
 
 Route::get('/delete/{id}', [PegawaiController::class, 'delete'])->name('pegawai.delete');
+
+Auth::routes();
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin', function () {
+        return 'admin page';
+    });
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
