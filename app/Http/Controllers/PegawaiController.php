@@ -14,12 +14,12 @@ class PegawaiController extends Controller
     public function index()
     {
         $pegawai = PegawaiModel::all();
-        return view('Pegawai.index')->with('pegawai', $pegawai);
+        return view('Admin.Pegawai.index')->with('pegawai', $pegawai);
     }
     
     public function create()
     {
-        return view('Pegawai.create');
+        return view('Admin.Pegawai.create');
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         $pegawai = PegawaiModel::whereId($id)->first();
-        return view('Pegawai.edit')->with('pegawai', $pegawai);
+        return view('admin.Pegawai.edit')->with('pegawai', $pegawai);
     }
 
 
